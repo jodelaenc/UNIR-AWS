@@ -29,6 +29,7 @@ pipeline {
             steps {
                 sh '''
                     cp config-repo/samconfig.toml samconfig.toml
+                    cat samconfig.toml
                     sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env staging --force-upload
                 '''
             }
@@ -48,6 +49,8 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
+                            git checkout develop
+                            git pull origin develop
                             git checkout main
                             git pull
                             git merge develop
