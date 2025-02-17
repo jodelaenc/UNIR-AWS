@@ -48,6 +48,7 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
+                            echo "Jenkinsfile" >> .gitignore
                             git checkout main
                             git pull origin main
                             git merge develop --strategy=ours
