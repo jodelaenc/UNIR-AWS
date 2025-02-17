@@ -8,6 +8,9 @@ pipeline {
                                                  usernameVariable: 'GIT_USERNAME', 
                                                  passwordVariable: 'GIT_PASSWORD')]) {
                     git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git", branch: 'develop'
+                    dir('config-repo') {
+                            git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS-CONFIG.git", branch: 'staging'
+                    }
                 }
             }
         }
@@ -25,6 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    cp config-repo/samconfig.toml samconfig.toml
                     sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env staging --force-upload
                 '''
             }
