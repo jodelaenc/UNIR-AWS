@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Get Code') {
-            steps {
-                    git branch: 'develop', url: 'https://github.com/jodelaenc/UNIR-AWS.git'
-                    bat 'dir'
-                    echo WORKSPACE
+    stage('Get Code') {
+        steps {
+            withCredentials([usernamePassword(credentialsId: 'UNIR', 
+                usernameVariable: 'GIT_USERNAME', 
+                passwordVariable: 'GIT_PASSWORD')]) {
+                    git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git", branch: 'main'
             }
         }
     }
