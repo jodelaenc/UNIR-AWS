@@ -48,7 +48,6 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
-                            git pull origin develop
                             git checkout main
                             git pull origin main
                             git merge develop --no-ff -m "Promoción automática desde develop a main"
