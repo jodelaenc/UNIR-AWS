@@ -50,7 +50,7 @@ pipeline {
                         sh '''
                             git checkout main
                             git pull origin main
-                            git merge develop
+                            git merge develop --strategy=ours
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
                         '''
                 }
