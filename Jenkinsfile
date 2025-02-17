@@ -49,8 +49,11 @@ pipeline {
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                             git clean -fd
-                            git rm --cached Jenkinsfile
+                            
                             git checkout main
+                            git rm --cached Jenkinsfile
+                            git commit -m "Dejar de rastrear Jenkinsfile"
+                            git push origin main
                             git pull origin main
                             git merge develop
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
