@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Versión inicial de código.
 
-## [1.0.1] - 2025-02-17
+## [1.0.2] - 2025-02-17
 ### Added
 - Commit para hacer deploy
 
