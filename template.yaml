@@ -106,6 +106,8 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
+      UpdateReplacePolicy: Retain
+      DeletionPolicy: Retain
 
 
 Outputs:
