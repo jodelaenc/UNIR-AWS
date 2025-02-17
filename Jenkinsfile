@@ -49,6 +49,7 @@ pipeline {
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                             git clean -fd
+                            git rm --cached Jenkinsfile
                             git checkout main
                             git pull origin main
                             git merge develop
