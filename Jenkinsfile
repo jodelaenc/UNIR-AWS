@@ -48,11 +48,10 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
-                            git checkout develop
                             git pull origin develop
                             git checkout main
-                            git pull
-                            git merge develop
+                            git pull origin main
+                            git merge develop --no-ff -m "Promoción automática desde develop a main"
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
                         '''
                 }
