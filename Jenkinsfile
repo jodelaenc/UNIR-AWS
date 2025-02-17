@@ -29,6 +29,8 @@ pipeline {
             steps {
                 sh '''
                     cp config-repo/samconfig.toml samconfig.toml
+                    pwd
+                    ls -la
                     cat samconfig.toml
                     sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env staging --force-upload
                 '''
