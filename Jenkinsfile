@@ -51,7 +51,7 @@ pipeline {
                             git clean -fd
                             git checkout main
                             git pull origin main
-                            git merge develop --no-ff -m "Promoción automática desde develop a main"
+                            git merge develop
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
                         '''
                 }
