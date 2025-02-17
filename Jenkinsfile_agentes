@@ -32,12 +32,13 @@ pipeline {
                     junit 'result-rest.xml'
             }
         }
-        post {
-            always {
-                script {
-                        echo "Limpiando el workspace..."
-                        deleteDir()                
-                    }
+    }
+
+    post {
+        always {
+            script {
+                echo "Limpiando el workspace..."
+                deleteDir()                
             }
         }
     }
