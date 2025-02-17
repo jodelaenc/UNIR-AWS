@@ -17,5 +17,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.4] - 2025-02-17
 ### Added
-- Commit para hacer deploy final en pipeline y lanzar CD Produccion
+- Commit SCM Jenkins
 
