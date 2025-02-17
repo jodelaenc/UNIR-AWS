@@ -34,7 +34,6 @@ pipeline {
                     echo "List directory:"
                     ls -la
                     cat samconfig.toml
-                    sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env staging --force-upload
                 '''
             }
         }
