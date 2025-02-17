@@ -10,4 +10,19 @@ pipeline {
             }
         }
     }
+    stage('Deploy') {
+            steps {
+                sh '''
+                    sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env production --force-upload
+                '''
+            }
+        }
+        stage('Rest Test') {
+            steps {
+                    sh '''
+                        /var/lib/jenkins/.local/bin/pytest -m "readonly" --junitxml=result-rest.xml test/integration/todoApiTest.py
+                    '''
+                    junit 'result-rest.xml'
+            }
+        }
 }
