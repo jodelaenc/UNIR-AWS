@@ -21,7 +21,7 @@ pipeline {
         stage('Rest Test') {
             steps {
                     sh '''
-                        /var/lib/jenkins/.local/bin/pytest -m ""readonly --junitxml=result-rest.xml test/integration/todoApiTest.py
+                        /var/lib/jenkins/.local/bin/pytest -m "readonly" --junitxml=result-rest.xml test/integration/todoApiTest.py
                     '''
                     junit 'result-rest.xml'
             }
