@@ -7,9 +7,15 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'UNIR', 
                                                  usernameVariable: 'GIT_USERNAME', 
                                                  passwordVariable: 'GIT_PASSWORD')]) {
+<<<<<<< HEAD
                     git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git", branch: 'main'
                     dir('config-repo') {
                             git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS-CONFIG.git", branch: 'production'
+=======
+                    git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git", branch: 'develop'
+                    dir('config-repo') {
+                            git url: "https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS-CONFIG.git", branch: 'staging'
+>>>>>>> develop
                     }
                 }
             }
@@ -18,7 +24,11 @@ pipeline {
             steps {
                 sh '''
                     cp config-repo/samconfig.toml samconfig.toml
+<<<<<<< HEAD
                     sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env production --force-upload
+=======
+                    sam deploy --no-fail-on-empty-changeset --config-file samconfig.toml --config-env staging --force-upload
+>>>>>>> develop
                 '''
             }
         }
@@ -30,5 +40,22 @@ pipeline {
                     junit 'result-rest.xml'
             }
         }
+<<<<<<< HEAD
+=======
+        stage('Promote') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'UNIR', 
+                    usernameVariable: 'GIT_USERNAME', 
+                    passwordVariable: 'GIT_PASSWORD')]) {
+                        sh '''
+                            git checkout main
+                            git pull origin main
+                            git merge develop --no-ff -m "Promoción automática desde develop a main"
+                            git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
+                        '''
+                }
+            }
+        }
+>>>>>>> develop
     }
 }
