@@ -21,5 +21,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2025-02-18
 ### Added
-- Commit probar webhook
+- Commit probar webhook test
 
