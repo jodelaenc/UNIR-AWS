@@ -48,6 +48,9 @@ pipeline {
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                             git pull
+                            git branch -a
+                            git fetch origin
+                            git branch -a
                             git checkout main
                             git pull
                             git merge develop
