@@ -47,10 +47,9 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
-                            git pull
-                            git checkout -b main origin/main
-                            git branch -a
-                            git pull
+                            git checkout main
+                            git fetch origin
+                            git reset --hard origin/main
                             git merge develop
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
                         '''
