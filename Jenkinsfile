@@ -47,9 +47,9 @@ pipeline {
                     usernameVariable: 'GIT_USERNAME', 
                     passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
-                            echo "Jenkinsfile" >> .gitignore
+                            git pull
                             git checkout main
-                            git pull origin main
+                            git pull
                             git merge develop
                             git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/jodelaenc/UNIR-AWS.git main
                         '''
