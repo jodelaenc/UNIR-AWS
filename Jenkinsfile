@@ -36,7 +36,6 @@ pipeline {
         stage('Rest Test') {
             steps {
                     sh '''
-                        
                         /var/lib/jenkins/.local/bin/pytest --junitxml=result-rest.xml test/integration/todoApiTest.py
                     '''
                     junit 'result-rest.xml'
